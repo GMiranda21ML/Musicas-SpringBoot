@@ -13,7 +13,7 @@ public class Menu {
 
     public static void opcoes() {
         System.out.println("""
-                1 - Cadastrar artista
+                1 - Cadastrar artistas
                 2 - Cadastrar músicas
                 3 - Listar Artistas
                 4 - Listar músicas
