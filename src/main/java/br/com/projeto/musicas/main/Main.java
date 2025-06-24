@@ -43,11 +43,15 @@ public class Main {
                 case 4:
                     listarMusicas();
                     break;
+                case 5:
+                    buscaMusicaPorArtista();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
                 default:
                     System.out.println("Opção invalida!");
+                    break;
             }
         }
     }
@@ -108,5 +112,20 @@ public class Main {
     private void listarMusicas() {
         List<Musica> listaDeMusicas = musicaRepository.listarMusicas();
         listaDeMusicas.forEach(System.out::println);
+    }
+
+    private void buscaMusicaPorArtista() {
+        listarArtistas();
+        System.out.println("Digite o nome do artista para ver as músicas: ");
+        String nomeArtista = scanner.nextLine();
+
+        Optional<Artista> artistaBuscado = artistaRepository.findByNomeContainingIgnoreCase(nomeArtista);
+
+        if (artistaBuscado.isPresent()) {
+            List<Musica> listaDeMusicas = musicaRepository.listarMusicasPorArtista(artistaBuscado.get().getNome());
+            listaDeMusicas.forEach(System.out::println);
+        } else {
+            System.out.println("Artista não encontrado!");
+        }
     }
 }
