@@ -12,11 +12,12 @@ public class Artista {
     @Enumerated(EnumType.STRING)
     private TipoArtista tipoArtista;
 
-    public Artista(Long id, String nome, String tipoArtista) {
-        this.id = id;
+    public Artista(String nome, String tipoArtista) {
         this.nome = nome;
         this.tipoArtista = TipoArtista.pegaTipo(tipoArtista);
     }
+
+    public Artista() {}
 
     public Long getId() {
         return id;

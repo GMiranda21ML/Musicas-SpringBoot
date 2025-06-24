@@ -20,5 +20,4 @@ public enum TipoArtista {
         throw new IllegalArgumentException("Nenhum tipo de artista encontrado para a string fornecida: " + tipo);
     }
 
-
 }
