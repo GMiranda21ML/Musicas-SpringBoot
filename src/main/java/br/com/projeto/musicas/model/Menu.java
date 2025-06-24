@@ -15,8 +15,9 @@ public class Menu {
         System.out.println("""
                 1 - Cadastrar artista
                 2 - Cadastrar músicas
-                3 - Listar músicas
-                4 - Buscar músicas por artista
+                3 - Listar Artistas
+                4 - Listar músicas
+                5 - Buscar músicas por artista
                 
                 0 - Sair
                 """);

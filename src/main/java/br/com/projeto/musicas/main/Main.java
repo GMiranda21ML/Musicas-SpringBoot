@@ -3,6 +3,7 @@ package br.com.projeto.musicas.main;
 import br.com.projeto.musicas.model.Artista;
 import br.com.projeto.musicas.model.Menu;
 import br.com.projeto.musicas.repository.ArtistaRepository;
+import br.com.projeto.musicas.repository.MusicaRepository;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,9 +12,11 @@ import java.util.Scanner;
 public class Main {
     private Scanner scanner = new Scanner(System.in);
     private ArtistaRepository artistaRepository;
+    private MusicaRepository musicaRepository;
 
-    public Main(ArtistaRepository artistaRepository) {
+    public Main(ArtistaRepository artistaRepository, MusicaRepository musicaRepository) {
         this.artistaRepository = artistaRepository;
+        this.musicaRepository = musicaRepository;
     }
 
     public void start() {
@@ -28,6 +31,9 @@ public class Main {
             switch (op) {
                 case 1:
                     cadastraArtistas();
+                    break;
+                case 3:
+                    listarArtistas();
                     break;
 
                 case 0:
@@ -52,5 +58,10 @@ public class Main {
             op = scanner.nextLine();
         }
         artistaRepository.saveAll(artistas);
+    }
+
+    private void listarArtistas() {
+        List<Artista> listaDeArtistas = artistaRepository.findAll();
+        listaDeArtistas.forEach(System.out::println);
     }
 }

@@ -2,6 +2,9 @@ package br.com.projeto.musicas.model;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "artistas")
 public class Artista {
@@ -11,6 +14,8 @@ public class Artista {
     private String nome;
     @Enumerated(EnumType.STRING)
     private TipoArtista tipoArtista;
+    @OneToMany(mappedBy = "artista", cascade = CascadeType.ALL)
+    private List<Musica> musicas = new ArrayList<>();
 
     public Artista(String nome, String tipoArtista) {
         this.nome = nome;
@@ -29,6 +34,15 @@ public class Artista {
 
     public TipoArtista getTipoArtista() {
         return tipoArtista;
+    }
+
+    public List<Musica> getMusicas() {
+        return musicas;
+    }
+
+    public void setMusicas(List<Musica> musicas) {
+        musicas.forEach(m -> m.setArtista(this));
+        this.musicas = musicas;
     }
 
     @Override
