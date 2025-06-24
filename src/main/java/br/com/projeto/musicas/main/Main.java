@@ -40,7 +40,9 @@ public class Main {
                 case 3:
                     listarArtistas();
                     break;
-
+                case 4:
+                    listarMusicas();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -101,5 +103,10 @@ public class Main {
     private void listarArtistas() {
         List<Artista> listaDeArtistas = artistaRepository.findAll();
         listaDeArtistas.forEach(System.out::println);
+    }
+
+    private void listarMusicas() {
+        List<Musica> listaDeMusicas = musicaRepository.listarMusicas();
+        listaDeMusicas.forEach(System.out::println);
     }
 }
